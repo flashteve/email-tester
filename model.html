@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 9 - 26 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+    <style>
+        * {
+            font-family: sans-serif !important;
+        }
+    </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset -->
+    <style type="text/css">
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin:0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            Margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+        .yshortcuts a {
+            border-bottom: none !important;
+        }
+
+        /* What it does: A work-around for iOS meddling in triggered links. */
+        .mobile-link--footer a,
+        a[x-apple-data-detectors] {
+            color:inherit !important;
+            text-decoration: underline !important;
+        }
+
+    </style>
+
+    <!-- Progressive Enhancements -->
+    <style>
+
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 480px) {
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid,
+            .fluid-centered {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+            /* And center justify these ones. */
+            .fluid-centered {
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body width="100%" bgcolor="#FFFFFF" style="Margin: 0;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#FFFFFF" style="border-collapse:collapse;"><tr><td valign="top">
+    <center style="width: 100%;">
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
+            Newsletter des FRAC
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients set with Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+                <tr>
+                    <td>
+            <![endif]-->
+
+
+            <!-- Email Body : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%" style="max-width: 600px;">
+
+                <!-- HEADER: BEGIN -->
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%">
+                        <img src="http://medias.dev-insight.com/newsletter_frac/logoFrac560px.png" width="600" height="" alt="logo FRAC" border="0" align="center" style="width: 100%; max-width: 580px; padding: 0 20px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="padding: 0 0 5px 0;">
+                        <hr style="margin: 0 20px; background-color:#000000; color:#000000; height:1px; border: 0 none;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="text-align: right; padding: 5px 20px; font-size: 12px; font-family: arial;font-weight: bold;">
+                        PLATFORM – <span style="color:#8E144A"> mars 2016 </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="text-align: left; padding: 10px 20px 10px 20px; font-size: 18px; font-family: arial;" >
+                        Actualités
+                    </td>
+                </tr>
+                <!-- HEADER: BEGIN -->
+
+                <!-- Thumbnail Left, Text Right : BEGIN -->
+                <tr>
+                    <!-- dir=ltr is where the magic happens. This can be changed to dir=rtl to swap the alignment on wide while maintaining stack order on narrow. -->
+                    <td dir="ltr" bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding: 10px 0;">
+                        <!--[if mso]>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                            <tr>
+                                <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:660px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0; padding: 10px 0;">
+                                    <!--[if mso]>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                        <tr>
+                                            <td align="left" valign="top" width="220">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; max-width: 200px; min-width:160px; vertical-align:top; width:100%;" class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td dir="ltr" valign="top" style="padding: 0 10px;">
+                                                    <img src="https://gallery.mailchimp.com/095f91b7782c9573723a1aee9/images/6ba4762b-5f8d-49ad-9094-0ce9b55f39fa.jpg" width="180" alt="" border="0" class="center-on-narrow">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td dir="ltr" valign="top" style="padding: 10px 20px; font-size: 12px; font-family: arial; color: #797B7C; text-align: center;">
+                                                    © Hervé Véronèse Centre Pompidou
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="440">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; max-width:66.66%; min-width:320px; vertical-align:top;" class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td dir="ltr" valign="top" style="font-size: 15px; font-family: arial; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 20px; text-align: left; text-indent:30px;" class="center-on-narrow reset-indent">
+                                                    <strong style="color:#111111;">Les FRAC prêts à relever les défis de la décentralisation culturelle dans les nouvelles régions</strong>
+                                                    <br>
+                                                    <p style="text-indent:30px;" class="reset-indent">Les Président.e.s et Directrices.eurs de FRAC se sont réunis le 8 mars dernier au Centre Pompidou - devant une œuvre de Daniel Buren - pour débattre, aux côtés des représentants de l'Etat et des Régions, des nouveaux défis de leurs institutions dans les nouvelles régions.</p>
+                                                    <!-- Button : Begin -->
+                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td width="100%" style="text-align: right; text-indent:0px;" class="center-on-narrow">
+                                                                <a href="http://google.com" style="text-decoration: none;">
+                                                                    <span style="color: #8e144a; font-family: arial;">en savoir plus</span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!-- Button : END -->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Thumbnail Left, Text Right : END -->
+
+                <!-- Thumbnail Left, Text Right : BEGIN -->
+                <tr>
+                    <!-- dir=ltr is where the magic happens. This can be changed to dir=rtl to swap the alignment on wide while maintaining stack order on narrow. -->
+                    <td dir="ltr" bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding: 10px 0;">
+                        <!--[if mso]>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                            <tr>
+                                <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:660px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0; padding: 10px 0;">
+                                    <!--[if mso]>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                        <tr>
+                                            <td align="left" valign="top" width="220">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; max-width: 200px; min-width:160px; vertical-align:top; width:100%;" class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td dir="ltr" valign="top" style="padding: 0 10px;">
+                                                    <img src="https://gallery.mailchimp.com/095f91b7782c9573723a1aee9/images/0fa26919-c191-424c-9e19-dc6faaad865d.jpg" width="180" alt="" border="0" class="center-on-narrow">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td dir="ltr" valign="top" style="padding: 10px 20px; font-size: 12px; font-family: arial; color: #797B7C; text-align: center;">
+                                                    Ryan Gander, A lamp made by the artist for his wife (Fourteenth attempt), 2013 Collection Frac Normandie Caen. Oeuvre acquise en 2015 © Ryan Gander
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="440">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; max-width:66.66%; min-width:320px; vertical-align:top;" class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td dir="ltr" valign="top" style="font-size: 15px; font-family: arial; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 20px; text-align: left; text-indent:30px;" class="center-on-narrow reset-indent">
+                                                    <strong style="color:#111111;">Chaque lundi, découvrez une nouvelle œuvre des FRAC sur les réseaux sociaux</strong>
+                                                    <br>
+                                                    <p style="text-indent:30px;" class="reset-indent">Parce que les FRAC sont engagés depuis plus de 30 ans à soutenir la création contemporaine, nous vous proposons de découvrir chaque semaine l’œuvre d’un artiste récemment entré dans les collections. Rendez-vous sur Facebook et Twitter !</p>
+                                                    <!-- Button : Begin -->
+                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td width="100%" style="text-align: right; text-indent:0px;" class="center-on-narrow">
+                                                                <a href="http://google.com" style="text-decoration: none;">
+                                                                    <span style="color: #8e144a; font-family: arial;">en savoir plus</span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!-- Button : END -->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Thumbnail Left, Text Right : END -->
+
+                <!--  SUBPART: BEGIN -->
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="padding: 5px 0;">
+                        <hr style="margin: 0 20px; background-color:#000000; color:#000000; height:1px; border: 0 none;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="text-align: left; padding: 10px 20px 10px 20px; font-size: 18px; font-family: arial;" >
+                        Focus
+                    </td>
+                </tr>
+                <!--  SUBPART: END -->
+
+                <!--  FOOTER: BEGIN -->
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="padding: 5px 0 0 0;">
+                        <hr style="margin: 0 20px; background-color:#000000; color:#000000; height:1px; border: 0 none;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="padding: 10px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td dir="ltr" align="center" valign="top" width="50%" class="stack-column-center" style="padding: 5px 0px; font-size: 15px; font-family: arial; mso-height-rule: exactly; line-height: 20px; text-align: center;">
+                                    <strong style="color:#111111;">Connectez-vous</strong>
+                                    <a style="text-decoration:none; padding: 0 2px 0 15px;" href="https://www.facebook.com/platform.frac">
+                                        <img width="15" height="15" alt="Facebook" style="width: 15px; height: 15px;" src="http://images.frac-platform.com/facebook.png">
+                                    </a>
+                                    <a style="text-decoration:none; padding: 0 2px;" href="https://twitter.com/platform_frac">
+                                        <img width="15" height="15" alt="Twitter" style="width: 15px; height: 15px;" src="http://images.frac-platform.com/twitter.png">
+                                    </a>
+                                    <a style="text-decoration:none; padding: 0 2px;" href="https://www.instagram.com/platformfrac">
+                                        <img width="15" height="15" alt="Instagram" style="width: 15px; height: 15px;" src="http://medias.dev-insight.com/newsletter_frac/instagram.png">
+                                    </a>
+                                </td>
+                                <td dir="ltr" align="center" valign="top" width="50%" class="stack-column-center" style="padding: 5px 0px; font-size: 15px; font-family: arial; mso-height-rule: exactly; line-height: 20px; text-align: center;">
+                                    <a href="http://www.lescollectionsdesfrac.fr" style="text-decoration: none;">
+                                        <strong><span style="color: #8e144a">www.lescollectionsdesfrac.fr</span></strong>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="padding: 0 0 5px 0;">
+                        <hr style="margin: 0 20px; background-color:#000000; color:#000000; height:1px; border: 0 none;"/>
+                    </td>
+                </tr>
+
+
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%">
+                        <!--[if mso]>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                            <tr>
+                                <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:600px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0; padding: 10px 0;">
+                                    <!--[if mso]>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                        <tr>
+                                            <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; width:100%; min-width:200px; max-width:300px; vertical-align:top;" class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td valign="top"  style="font-family: arial; font-size: 12px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 10px; text-align: justify; text-indent: 30px;" class="center-on-narrow reset-indent" >
+                                                    <strong style="color:#111111; font-size: 15px;">Qui est Platform ?</strong>
+                                                    <br>
+                                                    <p style="text-indent: 0px; line-height:15px;">
+                                                        Créée en 2005, l’association Platform réunit les 23 Fonds régionaux d’art contemporain autour de trois objectifs : favoriser une réflexion collective sur les missions et les enjeux des Frac, constituer un centre de ressources et d’informations pour ses membres et ses partenaires, développer les échanges et les coopérations interrégionales et internationales grâce à des invitations de commissaires étrangers.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; width:100%; min-width:200px; max-width:300px; vertical-align:top;" class="stack-column">
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="padding: 10px 10px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td valign="top" style="font-family: arial; font-size: 12px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 10px 10px 10px; text-align: left;" class="center-on-narrow" >
+                                                                Platform reçoit le soutien de :
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center-on-narrow" style="padding: 0 10px 10px 10px;">
+                                                                <img width="200" src="http://medias.dev-insight.com/newsletter_frac/logoIf280px.png" style="width: 200px;">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%">
+                        <!--[if mso]>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                            <tr>
+                                <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:600px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0; padding: 10px 0;">
+                                    <!--[if mso]>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                        <tr>
+                                            <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; width:100%; min-width:200px; max-width:300px; vertical-align:top;" class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td width="50%" valign="top"  style="font-family: arial; font-size: 12px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 10px; text-align: left;" class="stack-column-center" >
+                                                    <strong style="color:#111111; font-size: 15px; line-height: 1px;">—</strong>
+                                                    <br><br>
+                                                    <img src="http://images.frac-platform.com/platform.png">
+                                                    <p style="text-indent: 0px; line-height:15px;">
+                                                        Regroupement des Fonds régionaux<br>
+                                                        d’art contemporain<br>
+                                                        32 rue Yves Toudic Paris 75010 France<br>
+                                                        Téléphone : +33 (0)1 42 39 48 52<br>
+                                                        <a href="http://www.frac-platform.com" style="text-decoration:none; color: #8E144A; font-weight:bold">www.frac-platform.com</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block; Margin: 0 -2px; width:100%; min-width:200px; max-width:300px; vertical-align:top;" class="stack-column">
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="padding: 10px 10px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td valign="top"  style="font-family: arial; font-size: 12px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 10px; text-align: left;" class="center-on-narrow" >
+                                                                <p style="line-height:15px;">
+                                                                    programmation :
+                                                                    <a href="" style="text-decoration: none;">
+                                                                        <span style="color: #555555;">contact[@]dev-insight.com</span>
+                                                                    </a><br/>
+                                                                    design graphique : Alex Chavot
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+                <tr>
+                    <td dir="ltr" align="center" valign="top" width="100%" style="padding: 5px 0;">
+                        <hr style="margin: 0 20px; background-color:#000000; color:#000000; height:1px; border: 0 none;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-family: arial; font-size: 12px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 0 20px; text-align: center;">
+                        <p>
+                            Cette newsletter a été envoyée à l'adresse <span style="color:black !important">*|EMAIL|*</span>.
+                            Pour ne plus la recevoir <a href="*|UNSUB|*">désinscrivez-vous ici</a>.
+                        </p>
+                    </td>
+                </tr>
+
+                <!--  FOOTER: END -->
+
+
+            </table>
+            <!-- Email Body : END -->
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </center>
+</td></tr></table>
+</body>
+</html>

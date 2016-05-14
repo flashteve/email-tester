@@ -1,0 +1,10 @@
+{
+   "config" : {
+      "host": "127.0.0.1",
+      "port": 25,
+      "auth": {},
+      "from": "'dev-insight'<contact@dev-insight.com>",
+      "to": "esteve.boulanger@gmail.com, esteve.boulanger@outlook.fr",
+      "subject": "Dev-Insight",
+   }
+}
